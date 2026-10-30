@@ -1,0 +1,139 @@
+Starting Command: build_testmode 
+
+INFO (TDA-005): Command Line Invocation: 
+            build_testmode -modedef FULLSCAN -assignfile /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts/sa_top.FULLSCAN.pinassign -testmode FULLSCAN -workdir /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts -stdout summary  [end TDA_005]
+
+INFO (TDA-014): Cadence(R) Modus(TM) DFT Software Solution, Version 20.10-p006_1, built Aug 20 2020 (linux26_64) [end TDA_014]
+
+INFO (TDA-015): Log File: /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts/testresults/logs/log_build_testmode_FULLSCAN_103126054449-371454000 [end TDA_015]
+
+INFO (TDA-007): Job Information:
+            Date Started: Saturday Oct 31 05:44:49 2026  CST
+            Host machine is infect, x86_64 running Linux 3.10.0-957.el7.x86_64.
+            This job is process number 72745.
+[end TDA_007]
+
+INFO (TDA-009): Options/Values information.
+            (options marked with '*' have program generated values,
+             options marked with '+' were specified to default.)
+
+            -WORKDIR /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts
+            -TESTMODE FULLSCAN
+
+            -ASSIGNFILE /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts/sa_top.FULLSCAN.pinassign
+            -LOGFILE /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts/testresults/logs/log_build_testmode_FULLSCAN_103126054449-371454000
+            -MODEDEF FULLSCAN
+            -STDOUT summary
+[end TDA_009]
+MODEDEFPATH set to:  /opt/rh/MODUS201/tools.lnx86/tb/defaults/rules/modedef 
+TDRPATH set to: /opt/rh/MODUS201/tools.lnx86/tb/defaults/rules/tdr 
+
+Modus Build Test Mode(s) beginning...
+C5CcrcMain: error while loading shared libraries: libstdc++.so.5: cannot open shared object file: No such file or directory
+WARNING (TDR-670): A checksum could not be obtained for the TDR dummy.tdr.  [end TDR_670] 
+
+   TDR NAME      =  dummy.tdr 
+
+   SCAN_TYPE     =  GSD 
+   BOUNDARY      =  NONE 
+   IN            =  PI 
+   OUT           =  PO 
+
+INFO (TFW-117): Modus checked out a Modus_Test license.  [end TFW_117] 
+INFO (TTM-391): A default modeinit sequence will be generated.   [end TTM_391] 
+INFO (TTM-387): A default scanop sequence will be generated.   [end TTM_387] 
+INFO (THM-814): Testmode contains 96.79% active logic,  3.21% inactive logic and  0.00% constraint logic.   [end THM_814] 
+INFO (TTM-357): There are 8 scan chains which are controllable and observable.   [end TTM_357] 
+INFO (TFW-119): Modus checked in a Modus_Test license.  [end TFW_119] 
+
+There are no PPIs for Test Mode:  FULLSCAN
+
+Information for Test Mode:  FULLSCAN
+-------------------------
+
+         Scan Type = GSD
+
+
+ Latch Summary for Test Mode:  FULLSCAN
+ Latch Type                #Active   #Inactive       Total
+ ---------------------   ---------   ---------   ---------
+ Test Constraint (TC)            0           0           0 
+ Scan Enable     (SE)            0           0           0 
+ Fixed Value     (FV)            0           0           0 
+ Floating                        0           0           0 
+ Finite State    (FSM)           0           0           0 
+
+WARNING (TTM-809): Test mode FULLSCAN has been created, WARNINGs have been generated -
+           see preceding message(s) for details. [end TTM_809] 
+
+Test Function Pin Information for Test Mode:  FULLSCAN
+-------------------------------------------
+
+          2  SC    (System  Clock)             Pins
+          0  PC    (P Shift Clock)             Pins
+          1  EC    (E Shift Clock)             Pins
+
+          0  OSC   (Oscillator)                Pins
+
+          0  TI    (Test Inhibit)              Pins
+          1  SE    (Scan Enable)               Pins
+          0  CI    (Clock Isolation)           Pins
+          0  OI    (Output Inhibit)            Pins
+
+          8  SI    (Scan Input)                Pins
+          8  SO    (Scan Output)               Pins
+
+  Pin Index    Type Test Function                         Pin Name / Net Name
+  ---------    ---- ----------------------------------    -------------------
+         68      PI  +SC                                  rst_n / rst_n
+         67      PI  -EC  -SC                             clk / clk
+          0      PI  +SE                                  SE / SE
+         69      PI   SI                                  scan_in_0 / scan_in_0
+         70      PI   SI1                                 scan_in_1 / scan_in_1
+         71      PI   SI2                                 scan_in_2 / scan_in_2
+         72      PI   SI3                                 scan_in_3 / scan_in_3
+         73      PI   SI4                                 scan_in_4 / scan_in_4
+         74      PI   SI5                                 scan_in_5 / scan_in_5
+         75      PI   SI6                                 scan_in_6 / scan_in_6
+         76      PI   SI7                                 scan_in_7 / scan_in_7
+        400      PO   SO                                  scan_out_0 / scan_out_0
+        401      PO   SO1                                 scan_out_1 / scan_out_1
+        402      PO   SO2                                 scan_out_2 / scan_out_2
+        403      PO   SO3                                 scan_out_3 / scan_out_3
+        404      PO   SO4                                 scan_out_4 / scan_out_4
+        405      PO   SO5                                 scan_out_5 / scan_out_5
+        406      PO   SO6                                 scan_out_6 / scan_out_6
+        407      PO   SO7                                 scan_out_7 / scan_out_7
+
+
+
+Modus Build Test Mode(s) completed. Highest severity is (WARNING).
+
+            Cumulative Time in hours:minutes:seconds:
+                   CPU Time =   0:00:01.30
+               Elapsed Time =   0:00:01.48
+
+
+
+
+-------------------------------------------------------------------------------
+*                      Message Summary                                        *
+-------------------------------------------------------------------------------
+ Count  Number             First Instance of Message Text
+------- ------             ------------------------------
+
+  INFO Messages...
+      1 INFO (TFW-117): Modus checked out a Modus_Test license.   
+      1 INFO (TFW-119): Modus checked in a Modus_Test license.   
+      1 INFO (THM-814): Testmode contains 96.79% active logic,  3.21% inactive logic and  0.00% constraint logic.    
+      1 INFO (TTM-357): There are 8 scan chains which are controllable and observable.    
+      1 INFO (TTM-387): A default scanop sequence will be generated.    
+      1 INFO (TTM-391): A default modeinit sequence will be generated.    
+
+  WARNING Messages...
+      1 WARNING (TDR-670): A checksum could not be obtained for the TDR dummy.tdr.   
+      1 WARNING (TTM-809): Test mode FULLSCAN has been created, WARNINGs have been generated -
+
+ For a detailed explanation of a message and a suggested user response execute 'msgHelp <message id>'.  For example: msgHelp TDA-009
+
+-------------------------------------------------------------------------------

@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  rtl-check:
+    name: RTL lint and simulation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Icarus Verilog and Verilator
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends iverilog verilator
+
+      - name: Lint (Verilator)
+        run: make lint
+
+      - name: Simulate self-checking testbench (Icarus Verilog)
+        run: make sim
+
+      - name: Upload simulation log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sim-log
+          path: build/sim.log

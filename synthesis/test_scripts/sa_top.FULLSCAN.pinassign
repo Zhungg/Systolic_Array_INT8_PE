@@ -1,0 +1,19 @@
+assign pin=rst_n 	test_function= +SC; 	# test_mode
+assign pin=SE 	test_function= +SE; 	# shift_enable
+assign pin=clk 	test_function= -ES; 	
+assign pin=scan_in_0 	test_function= SI0;
+assign pin=scan_out_0 	test_function= SO0;
+assign pin=scan_in_1 	test_function= SI1;
+assign pin=scan_out_1 	test_function= SO1;
+assign pin=scan_in_2 	test_function= SI2;
+assign pin=scan_out_2 	test_function= SO2;
+assign pin=scan_in_3 	test_function= SI3;
+assign pin=scan_out_3 	test_function= SO3;
+assign pin=scan_in_4 	test_function= SI4;
+assign pin=scan_out_4 	test_function= SO4;
+assign pin=scan_in_5 	test_function= SI5;
+assign pin=scan_out_5 	test_function= SO5;
+assign pin=scan_in_6 	test_function= SI6;
+assign pin=scan_out_6 	test_function= SO6;
+assign pin=scan_in_7 	test_function= SI7;
+assign pin=scan_out_7 	test_function= SO7;

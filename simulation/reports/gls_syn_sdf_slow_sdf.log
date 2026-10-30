@@ -1,0 +1,19 @@
+======================================================================
+
+Annotating SDF timing data:
+  Compiled SDF file:     dut.sdf.X
+  Log file:              sdf.log
+  Backannotation scope:  tb_sa_top.dut
+  Configuration file:    
+  MTM control:           MAXIMUM
+  Scale factors:         
+  Scale type:            
+
+Time units: 1ns
+
+xmelab: *W,SDFNET: Unable to annotate to non-existent timing check (REMOVAL (posedge RN) (posedge CK) (0.148)) of instance tb_sa_top.dut.\g_skew[3].g_delay.sr_reg[2][8]  of module SDFFRHQX2 <./dut.sdf, line 21573>.
+xmelab: *W,SDFNET: Unable to annotate to non-existent timing check (REMOVAL (posedge RN) (posedge CK) (0.148)) of instance tb_sa_top.dut.\g_skew[4].g_delay.sr_reg[3][8]  of module SDFFRHQX2 <./dut.sdf, line 22348>.
+xmelab: *W,SDFNET: Unable to annotate to non-existent timing check (REMOVAL (posedge RN) (posedge CK) (0.148)) of instance tb_sa_top.dut.\g_skew[5].g_delay.sr_reg[4][8]  of module SDFFRHQX2 <./dut.sdf, line 23371>.
+xmelab: *W,SDFNET: Unable to annotate to non-existent timing check (REMOVAL (posedge RN) (posedge CK) (0.148)) of instance tb_sa_top.dut.\u_array_g_row[7].g_col[1].u_pe_a_bank_out_reg  of module SDFFRHQX2 <./dut.sdf, line 26936>.
+xmelab: *W,SDFNET: Unable to annotate to non-existent timing check (REMOVAL (posedge RN) (posedge CK) (0.148)) of instance tb_sa_top.dut.\u_array_g_row[7].g_col[2].u_pe_a_bank_out_reg  of module SDFFRHQX2 <./dut.sdf, line 27680>.
+xmelab: *W,SDFNET: Unable to annotate to non-existent timing check (REMOVAL (posedge RN) (posedge CK) (0.148)) of instance tb_sa_top.dut.\u_array_g_row[7].g_col[3].u_pe_a_bank_out_reg  of module SDFFRHQX2 <./dut.sdf, line 28424>.

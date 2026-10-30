@@ -1,0 +1,25 @@
+RAIL ANALYSIS REPORT
+Generated Date: Sat Oct 31 05:41:21 2026
+Host Name: infect
+
+
+==============================
+
+==============================
+User: icer 
+Hostname: infect 
+Peak Memory: 0 Mbytes 
+Total CPU time: 00:00:39 
+Total Wall Clock time: 00:00:42 
+Exit status: Successful 
+State Directory: /home/icer/projects/sa_int8_45nm/physical_design/reports/rail_analysis/static_25c/SA_PD_25C_avg_1 
+Units: Volt, Amp, Ohm, fF 
+
+
+==============================
+POWER NETS
+==============================
+Net Name: VSS
+Net Name: VDD
+Analysis Method: static 
+

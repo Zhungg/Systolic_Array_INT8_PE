@@ -1,0 +1,79 @@
+xrun(64): 20.09-s009: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	20.09-s009: Started on Oct 31, 2026 at 03:17:35 CST
+xrun
+	-64bit
+	-access +rwc
+	-gui
+	-timescale 1ns/1ps
+	-coverage all
+	-covdut sa_top
+	-covoverwrite
+	-covtest sa_selfcheck
+	/home/icer/projects/sa_int8_45nm/rtl/sa_pe.v
+	/home/icer/projects/sa_int8_45nm/rtl/sa_array.v
+	/home/icer/projects/sa_int8_45nm/rtl/sa_top.v
+	/home/icer/projects/sa_int8_45nm/tb/tb_sa_top.v
+	-top tb_sa_top
+	+NTILES=30
+	+SEED=1
+	-l xrun_rtl.log
+
+   User defined plus("+") options:
+	+NTILES=30
+	+SEED=1
+
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /opt/rh/XCELIUM2009/tools/xcelium/files/xmsimrc
+xcelium> probe -create tb_sa_top -all -depth all -database waves
+xmsim: *E,DBNFND: waves does not match any database name.
+xcelium> probe -create dut -all -depth all -database waves
+xmsim: *E,DBNFND: waves does not match any database name.
+xcelium> probe -create dut -all -depth all
+xmsim: *E,PBNODB: Cannot determine database for the given probe command.
+xcelium> database -open waves -shm -default
+Created default SHM database waves
+xcelium> probe -create tb_sa_top -all -depth all -database waves
+Created probe 1
+xcelium> probe -create dut -all -depth all -database waves
+Created probe 2
+xcelium> run
+[TB] N=8 NTILES=30 SEED=1
+[TB] phase 1 (directed) done: 25 rows checked
+[TB] phase 2 (random) done: 525 rows checked
+[4735000] [TB] async reset test done
+--------------------------------------------------------
+ sa_top self-checking testbench summary
+--------------------------------------------------------
+   output rows checked : 551 (x 8 results)
+   rows still expected : 0
+   load/compute overlap: 128 cycles
+   bubbles injected    : 111
+   data errors         : 0
+   reset errors        : 0
+*** TEST PASSED ***
+--------------------------------------------------------
+Simulation complete via $finish(1) at time 4965 NS + 0
+../tb/tb_sa_top.v:390         $finish;
+xcelium> probe -create -shm tb_sa_top.A_mem tb_sa_top.M_of tb_sa_top.W_mem tb_sa_top.bank_free_at tb_sa_top.exp_fifo tb_sa_top.loaded tb_sa_top.ready_at
+Created probe 3
+xcelium> run
+xmsim: *E,RNFNSH: Cannot continue simulation due to a previous $finish.
+xcelium> scope -set tb_sa_top
+xcelium> ^C
+xcelium> exit
+...Regained control from SimVision
+-------------------------------------
+
+coverage setup:
+  workdir  :  ./cov_work
+  dutinst  :  tb_sa_top.dut(sa_top)
+  scope    :  scope
+  testname :  sa_selfcheck
+
+coverage files:
+  model(design data) :  ./cov_work/scope/icc_6d4ca9d6_00000000.ucm (reused)
+  data               :  ./cov_work/scope/sa_selfcheck/icc_6d4ca9d6_00000000.ucd
+TOOL:	xrun(64)	20.09-s009: Exiting on Oct 31, 2026 at 03:30:13 CST  (total: 00:12:38)

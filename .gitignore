@@ -1,0 +1,69 @@
+# Cadence state & metrics
+.cadence/
+.powerAnalysis.pinfo
+.qor_metric.tcl
+physical_design/.cadence/
+physical_design/.timing_file*
+flex*.log
+*.key
+*.cmd
+*.history
+
+# Simulation-generated data
+simulation/xcelium.d/
+simulation/.simvision/
+simulation/waves.shm/
+simulation/cov_work/
+simulation/html_*/
+simulation/gls_*/
+simulation/*.log
+simulation/*.out
+
+# Synthesis / DFT work data (curated reports and outputs are tracked)
+synthesis/dft_run/logs/
+synthesis/dft_run/fv/
+synthesis/dft_run/rtl_fv_map_db/
+synthesis/dft_run/test_scripts/
+synthesis/dft_run/*.do
+synthesis/dft_run/*.out
+synthesis/**/.rs_*.tstamp
+synthesis/*.out
+
+# LEC work data
+equivalence_checking/*.out
+.lec_*.do
+
+# Physical design work, databases & raw reports
+# (curated reports live in physical_design/signoff/)
+physical_design/logs/
+physical_design/work/
+physical_design/reports/
+physical_design/reports_*/
+physical_design/timingReports/
+physical_design/cellIDMap
+physical_design/rc_model.bin
+physical_design/*.antenna.lef
+physical_design/*.out
+physical_design/*.log
+physical_design/results/*.enc/
+physical_design/results/*.enc.tmp/
+physical_design/results/*.sdf
+physical_design/results/*.spef
+physical_design/results/*.io
+physical_design/results/*.gls
+physical_design/results/*.tar.gz
+
+# Layout contains merged gsclib045 cell GDS (PDK content) - never commit
+*.gds
+*.gds.gz
+*.oas
+
+# OS / editor / temp
+*.orig
+*.swp
+*~
+core.*
+.DS_Store
+Thumbs.db
+build/
+work/

@@ -1,0 +1,122 @@
+Starting Command: build_faultmodel 
+
+INFO (TDA-005): Command Line Invocation: 
+            build_faultmodel -includedynamic no -workdir /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts -stdout summary  [end TDA_005]
+
+INFO (TDA-014): Cadence(R) Modus(TM) DFT Software Solution, Version 20.10-p006_1, built Aug 20 2020 (linux26_64) [end TDA_014]
+
+INFO (TDA-015): Log File: /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts/testresults/logs/log_build_faultmodel_103126054455-569793000 [end TDA_015]
+
+INFO (TDA-007): Job Information:
+            Date Started: Saturday Oct 31 05:44:55 2026  CST
+            Host machine is infect, x86_64 running Linux 3.10.0-957.el7.x86_64.
+            This job is process number 72819.
+[end TDA_007]
+
+INFO (TDA-009): Options/Values information.
+            (options marked with '*' have program generated values,
+             options marked with '+' were specified to default.)
+
+            -WORKDIR /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts
+
+            -LOGFILE /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts/testresults/logs/log_build_faultmodel_103126054455-569793000
+            -STDOUT summary
+            -includedynamic no
+[end TDA_009]
+INFO (TFW-117): Modus checked out a Modus_Test license.  [end TFW_117] 
+INFO (TFM-099): Build Fault Model started.  [end TFM_099] 
+INFO (TFM-102): Creating faultModel file /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts/tbdata/faultModel.  [end TFM_102] 
+
+Global Ignored Static Fault Count                 0
+Global Ignored Dynamic Fault Count                0
+
+
+                            Global Statistics
+
+                    ATCov  ----------------------- Global Faults --------------------------
+                   Global        Total       Tested     Possibly    Redundant     Untested
+
+Total Static         0.00       166348            0            0            0       166348
+Collapsed Static     0.00       130490            0            0            0       130490
+PI Static            0.00          286            0            0            0          286
+PO Static            0.00          530            0            0            0          530
+
+Total Dynamic                        0
+
+Parametric        
+
+IDDq                 0.00       166348            0                                 166348
+
+
+
+INFO (TFM-103): Creating faultStatus file /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts/tbdata/faultStatus.  [end TFM_103] 
+
+                           Testmode Statistics: FULLSCAN
+
+                 ---- ATCov ---- ------------------------ Testmode Faults ----------------------- ------------------------- Global Faults ------------------------
+                 Testmode Global        Total       Tested     Possibly    Redundant     Untested        Total       Tested     Possibly    Redundant     Untested
+
+Total Static         0.00   0.00       166348            0            0            0       166348       166348            0            0            0       166348
+Collapsed Static     0.00   0.00       130490            0            0            0       130490       130490            0            0            0       130490
+PI Static            0.00   0.00          286            0            0            0          286          286            0            0            0          286
+PO Static            0.00   0.00          530            0            0            0          530          530            0            0            0          530
+
+Total Dynamic                               0
+
+Parametric        
+
+IDDq                 0.00   0.00       166348            0                                 166348       166348            0                                 166348
+
+Path                 0.00   0.00            0            0                                      0            0            0                                      0
+
+
+
+INFO (TFM-704): Maximum Global Test Coverage Statistics: 
+
+                  %Active      #Faults      #Active    #Inactive
+Total Static       100.00       166348       166348            0
+Collapsed Static   100.00       130490       130490            0
+PI Static          100.00          286          286            0
+PO Static          100.00          530          530            0
+
+Total Dynamic                        0
+
+Parametric        
+
+There are 1 test mode(s) defined:
+      FULLSCAN
+
+[end TFM_704]
+INFO (TFM-109): Build Fault Model has completed with highest level severity message of INFO.  [end TFM_109] 
+
+INFO (TDA-001): Maximum Memory used during the run and Cumulative Time in hours:minutes:seconds:
+
+                  Total Memory =           54,472,800  bytes
+
+                      CPU Time =    0:00:00.34
+                  Elapsed Time =    0:00:00.40                    [end TDA_001]
+
+     Date Ended:  Saturday Oct 31 05:44:56 2026  CST
+
+INFO (TFW-119): Modus checked in a Modus_Test license.  [end TFW_119] 
+
+
+
+-------------------------------------------------------------------------------
+*                      Message Summary                                        *
+-------------------------------------------------------------------------------
+ Count  Number             First Instance of Message Text
+------- ------             ------------------------------
+
+  INFO Messages...
+      1 INFO (TFM-099): Build Fault Model started.   
+      1 INFO (TFM-102): Creating faultModel file /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts/tbdata/faultModel.   
+      1 INFO (TFM-103): Creating faultStatus file /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts/tbdata/faultStatus.   
+      1 INFO (TFM-109): Build Fault Model has completed with highest level severity message of INFO.   
+      1 INFO (TFM-704): Maximum Global Test Coverage Statistics: 
+      1 INFO (TFW-117): Modus checked out a Modus_Test license.   
+      1 INFO (TFW-119): Modus checked in a Modus_Test license.   
+
+ For a detailed explanation of a message and a suggested user response execute 'msgHelp <message id>'.  For example: msgHelp TDA-009
+
+-------------------------------------------------------------------------------

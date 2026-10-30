@@ -1,0 +1,176 @@
+xrun(64): 20.09-s009: (c) Copyright 1995-2021 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	20.09-s009: Started on Oct 31, 2026 at 05:46:40 CST
+xrun
+	-64bit
+	-access +rwc
+	-timescale 1ns/1ps
+	+define+GLS
+	-v /home/icer/LAB/RTLtoGDSII/counter_design_database_45nm/gate_level_simulation/slow_vdd1v0_basicCells.v
+	/home/icer/projects/sa_int8_45nm/synthesis/dft_run/outputs/sa_top_syn_dft.v
+	/home/icer/projects/sa_int8_45nm/tb/tb_sa_top.v
+	-top tb_sa_top
+	+NTILES=10
+	-l xrun.log
+
+   User defined plus("+") options:
+	+NTILES=10
+
+file: /home/icer/projects/sa_int8_45nm/synthesis/dft_run/outputs/sa_top_syn_dft.v
+	module worklib.sa_top:v
+		errors: 0, warnings: 0
+file: /home/icer/projects/sa_int8_45nm/tb/tb_sa_top.v
+	module worklib.tb_sa_top:v
+		errors: 0, warnings: 0
+file: /home/icer/LAB/RTLtoGDSII/counter_design_database_45nm/gate_level_simulation/slow_vdd1v0_basicCells.v
+	module slow_vdd1v0_basicCells.ADDFX1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.ADDHX1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.AND2X1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.AND2XL:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.AND3XL:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.AO21X1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.AO21XL:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.AOI211XL:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.AOI21X1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.AOI21XL:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.AOI22X1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.AOI22XL:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.AOI2BB1X1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.BUFX12:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.BUFX2:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.BUFX3:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.BUFX6:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.CLKINVX12:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.INVX1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.INVX12:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.INVX2:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.INVXL:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.MX2X1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.MX2XL:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.MXI2XL:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.NAND2BX1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.NAND2X1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.NAND2X4:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.NAND2XL:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.NOR2BX1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.NOR2X1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.NOR2XL:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.OA22X1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.OAI211X1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.OAI21X1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.OAI221X1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.OAI22X1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.OAI2BB1X1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.OR2X1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.OR2XL:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.SDFFRHQX1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.SDFFRHQX2:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.XNOR2X1:v
+		errors: 0, warnings: 0
+	module slow_vdd1v0_basicCells.XOR2XL:v
+		errors: 0, warnings: 0
+	primitive slow_vdd1v0_basicCells.altos_dff_r_err:v
+		errors: 0, warnings: 0
+	primitive slow_vdd1v0_basicCells.altos_dff_r:v
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+		Caching library 'worklib' ....... Done
+		Caching library 'slow_vdd1v0_basicCells' ....... Done
+	Top level design units:
+		tb_sa_top
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.sa_top:v <0x6aceb959>
+			streams:   0, words:     0
+		worklib.tb_sa_top:v <0x734a590b>
+			streams:  21, words: 55640
+		slow_vdd1v0_basicCells.SDFFRHQX1:v <0x21986f17>
+			streams:   0, words:     0
+		slow_vdd1v0_basicCells.SDFFRHQX2:v <0x5db4ac30>
+			streams:   0, words:     0
+		slow_vdd1v0_basicCells.SDFFRHQX1:v <0x129bd31d>
+			streams:   0, words:     0
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                     Instances  Unique
+		Modules:                 18360      46
+		UDPs:                     9548       2
+		Primitives:              73919       5
+		Timing outputs:          20918      51
+		Registers:                4829      59
+		Scalar wires:            31595       -
+		Expanded wires:            128       2
+		Always blocks:               1       1
+		Initial blocks:              3       3
+		Parallel blocks:             1       1
+		Cont. assignments:           0      72
+		Pseudo assignments:          9       9
+		Timing checks:           85926       -
+		Delayed tcheck signals:  19096    8080
+		Simulation timescale:      1ps
+	Writing initial simulation snapshot: worklib.tb_sa_top:v
+Loading snapshot worklib.tb_sa_top:v .................... Done
+xcelium> source /opt/rh/XCELIUM2009/tools/xcelium/files/xmsimrc
+xcelium> run
+[TB] N=8 NTILES=10 SEED=1
+[TB] phase 1 (directed) done: 25 rows checked
+[TB] phase 2 (random) done: 195 rows checked
+[2070000] [TB] async reset test done
+--------------------------------------------------------
+ sa_top self-checking testbench summary
+--------------------------------------------------------
+   output rows checked : 220 (x 8 results)
+   rows still expected : 0
+   load/compute overlap: 57 cycles
+   bubbles injected    : 36
+   data errors         : 0
+   reset errors        : 0
+*** TEST PASSED ***
+--------------------------------------------------------
+Simulation complete via $finish(1) at time 2305 NS + 0
+/home/icer/projects/sa_int8_45nm/tb/tb_sa_top.v:390         $finish;
+xcelium> exit
+TOOL:	xrun(64)	20.09-s009: Exiting on Oct 31, 2026 at 05:46:49 CST  (total: 00:00:09)

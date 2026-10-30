@@ -1,0 +1,133 @@
+                          CONFORMAL (R)
+                   Version 19.10-p100 (03-May-2019) (64 bit executable)
+   Copyright (c) Cadence Design Systems, Inc., 1997-2019. All Rights Reserved
+
+
+This program is proprietary and confidential information belonging to
+Cadence Design Systems, Inc., and may be used and disclosed only as authorized
+in a license agreement controlling such use and disclosure.
+
+// Warning: This version is 2736 days old. You can download the latest version from http://downloads.cadence.com.
+
+CPU time     : 2.90    seconds
+Elapse time  : 2       seconds
+Memory usage : 411.73  M bytes
+// Command: read library /home/icer/LAB/RTLtoGDSII/counter_design_database_45nm/lib/slow_vdd1v0_basiccells.v -verilog -both
+// Parsing file /home/icer/LAB/RTLtoGDSII/counter_design_database_45nm/lib/slow_vdd1v0_basiccells.v ...
+// Warning: (RTL14.1) Fanout load of the signal is removed (occurrence:56)
+// Warning: (VLG5.5) Internal primitive is recognized (occurrence:120)
+// Warning: (VLG5.6) Named port association is ignored for primitive gate (occurrence:120)
+// Warning: (IGN7.1) trireg net is modeled as a latch to hold value (occurrence:1)
+// Warning: (HRC1.4) Module/entity is empty (blackboxed) (occurrence:1)
+// Note: (HRC3.5b) Open output port connection is detected (occurrence:80)
+// Warning: (HRC3.10b) An input port is declared, but it is not used. Module is empty (occurrence:1)
+// Note: Read VERILOG library successfully
+CPU time     : 3.14    seconds
+Elapse time  : 2       seconds
+Memory usage : 435.23  M bytes
+// Command: read design ../synthesis/dft_run/fv/sa_top/fv_map.v.gz -verilog -golden
+// Parsing file ../synthesis/dft_run/fv/sa_top/fv_map.v.gz ...
+// Golden root module is set to 'sa_top'
+// Warning: (HRC3.10a) An input port is declared, but it is not completely used in the module (occurrence:1)
+// Note: Read VERILOG design successfully
+CPU time     : 4.52    seconds
+Elapse time  : 4       seconds
+Memory usage : 459.03  M bytes
+// Command: read design ../synthesis/dft_run/outputs/sa_top_syn_dft.v -verilog -revised
+// Parsing file ../synthesis/dft_run/outputs/sa_top_syn_dft.v ...
+// Revised root module is set to 'sa_top'
+// Note: Read VERILOG design successfully
+CPU time     : 7.54    seconds
+Elapse time  : 7       seconds
+Memory usage : 487.53  M bytes
+// Command: add pin constraints 0 SE -revised
+// Command: add ignored inputs  scan_in_0 scan_in_1 scan_in_2 scan_in_3 scan_in_4 scan_in_5 scan_in_6 scan_in_7 -revised
+// Command: add ignored outputs scan_out_0 scan_out_1 scan_out_2 scan_out_3 scan_out_4 scan_out_5 scan_out_6 scan_out_7 -revised
+// Command: set system mode lec
+// Processing Golden ...
+// Modeling Golden ...
+// Processing Revised ...
+// Modeling Revised ...
+CPU time     : 9.74    seconds
+Elapse time  : 9       seconds
+Memory usage : 546.37  M bytes
+// Warning: Golden and Revised have different numbers of key points:
+// Golden  key points = 5166
+// Revised key points = 5173
+// Mapping key points ...
+// Warning: Primary input 'SE' in Golden has no correspondence in Revised
+================================================================================
+Mapped points: SYSTEM class
+--------------------------------------------------------------------------------
+Mapped points     PI     PO     DFF       Total   
+--------------------------------------------------------------------------------
+Golden            134    257    4774      5165    
+--------------------------------------------------------------------------------
+Revised           134    257    4774      5165    
+================================================================================
+Unmapped points:
+================================================================================
+Golden:
+--------------------------------------------------------------------------------
+Unmapped points   PI        Total   
+--------------------------------------------------------------------------------
+Extra             1         1       
+================================================================================
+Revised:
+--------------------------------------------------------------------------------
+Unmapped points   PI        Total   
+--------------------------------------------------------------------------------
+Extra             8         8       
+================================================================================
+CPU time     : 10.26   seconds
+Elapse time  : 10      seconds
+Memory usage : 546.37  M bytes
+// Command: add compared points -all
+// 5031 compared points added to compare list
+// Command: compare
+================================================================================
+Compared points      PO     DFF       Total   
+--------------------------------------------------------------------------------
+Equivalent           257    4774      5031    
+================================================================================
+CPU time     : 12.33   seconds
+Elapse time  : 12      seconds
+Memory usage : 546.37  M bytes
+// Command: report verification
+================================================================================
+                            Verification Report
+--------------------------------------------------------------------------------
+Category                                                                  Count
+--------------------------------------------------------------------------------
+1. Non-standard modeling options used:                                      0
+--------------------------------------------------------------------------------
+2. Incomplete verification:                                                 1
+     Command "add ignore outputs" used:                        yes
+--------------------------------------------------------------------------------
+3. User modification to design:                                             0
+--------------------------------------------------------------------------------
+4. Conformal Constraint Designer clock domain crossing checks recommended:  0
+--------------------------------------------------------------------------------
+5. Design ambiguity:                                                        0
+--------------------------------------------------------------------------------
+6. Compare Results:                                                        PASS
+================================================================================
+// Command: report statistics
+Mapping and compare statistics
+================================================================================
+                     Compare Result       Golden            Revised
+--------------------------------------------------------------------------------
+Root module name                          sa_top            sa_top            
+
+Primary inputs                               135                142
+   Mapped                                    134                134
+      Extra                                    1                  8
+
+Primary outputs                              257                257
+   Mapped                                    257                257
+      Equivalent                257
+
+State key points                            4774               4774
+   Mapped                                   4774               4774
+      Equivalent               4774
+================================================================================

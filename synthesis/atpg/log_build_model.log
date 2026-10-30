@@ -1,0 +1,148 @@
+Starting Command: build_model 
+
+INFO (TDA-005): Command Line Invocation: 
+            build_model -cell sa_top -designtop sa_top -allowmissingmodules no -workdir /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts -designsource /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts/sa_top.test_netlist.v -stdout summary -techlib /home/icer/LAB/RTLtoGDSII/counter_design_database_45nm/lib/slow_vdd1v0_basiccells.v  [end TDA_005]
+
+INFO (TDA-014): Cadence(R) Modus(TM) DFT Software Solution, Version 20.10-p006_1, built Aug 20 2020 (linux26_64) [end TDA_014]
+
+INFO (TDA-015): Log File: /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts/testresults/logs/log_build_model_103126054442-823042000 [end TDA_015]
+
+INFO (TDA-007): Job Information:
+            Date Started: Saturday Oct 31 05:44:42 2026  CST
+            Host machine is infect, x86_64 running Linux 3.10.0-957.el7.x86_64.
+            This job is process number 72673.
+[end TDA_007]
+
+INFO (TDA-009): Options/Values information.
+            (options marked with '*' have program generated values,
+             options marked with '+' were specified to default.)
+
+            -WORKDIR /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts
+
+            -designtop sa_top
+            -TECHLIB /home/icer/LAB/RTLtoGDSII/counter_design_database_45nm/lib/slow_vdd1v0_basiccells.v
+            -LOGFILE /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts/testresults/logs/log_build_model_103126054442-823042000
+            -STDOUT summary
+            -DESIGNSOURCE /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts/sa_top.test_netlist.v
+          + -allowmissingmodules no
+[end TDA_009]
+INFO (TFW-117): Modus checked out a Modus_Test license.  [end TFW_117] 
+INFO (TEI-195): Build Model - Controller starting: [end TEI_195] 
+
+
+Search Order  1:  "/home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts/sa_top.test_netlist.v"
+Search Order  2:  "/home/icer/LAB/RTLtoGDSII/counter_design_database_45nm/lib/slow_vdd1v0_basiccells.v"
+
+
+
+Reading Verilog data from /home/icer/projects/sa_int8_45nm/synthesis/dft_run/test_scripts/sa_top.test_netlist.v
+
+Verilog Parser complete - 1 modules, 0 gates, 0 user defined primitives.
+
+
+Reading Verilog data from /home/icer/LAB/RTLtoGDSII/counter_design_database_45nm/lib/slow_vdd1v0_basiccells.v
+
+Verilog Parser complete - 546 modules, 1878 gates, 2 user defined primitives.
+
+
+
+INFO (TEI-196): Build Model - Hierarchical Model Build starting: [end TEI_196] 
+
+
+
+Number of blocks in the hierarchical model is: 171,304.
+
+Number of technology library cell instances in the hierarchical model is: 18,430.
+
+
+INFO (TEI-197): Build Model - Hierarchical Model Build completed. [end TEI_197] 
+
+
+
+INFO (TEI-198): Build Model - Flat Model Build starting: [end TEI_198] 
+
+ defaultTIE = X
+ defaultDFN = T
+
+
+INFO (TLM-055): Design Summary
+                --------------
+
+Hierarchical Model:                  Flattened Model:
+        171,304  Blocks                     148,759  Blocks
+        547,536  Pins                       148,759  Nodes
+        299,030  Nets
+
+Primary Inputs:                      Primary Outputs:
+        143  Input Only                       265  Output Only
+          0  Input/Output                       0  Input/Output
+        143  Total Inputs                     265  Total Outputs
+
+Tied Nets:                           Dotted Nets:
+      9,548  Tied to 0                          0  Two-State
+      4,774  Tied to 1                          0  Three-State
+          0  Tied to X                          0  Total Dotted Nets
+     14,322  Total Tied Nets
+
+Selected Primitive Functions:
+          0  Clock Chopper (CHOP) primitives 
+          0  RAMs
+          0  ROMs
+          0  TSDs
+          0  Resistors
+          0  Transistors
+          0  Latches
+
+
+      4,774  Rising  Edge Flop w/Set and Reset-Dominant Port
+      4,774  Total Flops
+
+     18,430  Technology Library Cell Instances
+
+[end TLM_055] 
+Optimization removed logic for 2 of 48 cells in this design.
+
+Optimization removed a total of 0 tied Latch Ports.
+Optimization removed a total of 0 non-controlling inputs.
+Optimization removed a total of 4,774 dangling logic nodes.
+
+
+
+INFO (TEI-199): Build Model - Flat Model Build completed.  [end TEI_199] 
+
+
+INFO (TDA-001): Maximum Memory used during the run and Cumulative Time in hours:minutes:seconds:
+
+                  Total Memory =          140,372,496  bytes
+
+                      CPU Time =    0:00:03.73
+                  Elapsed Time =    0:00:05.17                    [end TDA_001]
+
+
+
+INFO (TEI-200): Build Model - Controller completed. [end TEI_200] 
+
+INFO (TFW-119): Modus checked in a Modus_Test license.  [end TFW_119] 
+
+
+
+-------------------------------------------------------------------------------
+*                      Message Summary                                        *
+-------------------------------------------------------------------------------
+ Count  Number             First Instance of Message Text
+------- ------             ------------------------------
+
+  INFO Messages...
+      1 INFO (TEI-195): Build Model - Controller starting:  
+      1 INFO (TEI-196): Build Model - Hierarchical Model Build starting:  
+      1 INFO (TEI-197): Build Model - Hierarchical Model Build completed.  
+      1 INFO (TEI-198): Build Model - Flat Model Build starting:  
+      1 INFO (TEI-199): Build Model - Flat Model Build completed.   
+      1 INFO (TEI-200): Build Model - Controller completed.  
+      1 INFO (TFW-117): Modus checked out a Modus_Test license.   
+      1 INFO (TFW-119): Modus checked in a Modus_Test license.   
+      1 INFO (TLM-055): Design Summary
+
+ For a detailed explanation of a message and a suggested user response execute 'msgHelp <message id>'.  For example: msgHelp TDA-009
+
+-------------------------------------------------------------------------------
