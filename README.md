@@ -190,7 +190,6 @@ net. The Genus netlist itself is unchanged, so LEC, GLS and ATPG still apply.
 ├── docs/                    Design specification (SPEC.md)
 ├── img/                     Flow screenshots (waveform, coverage, schematic, LEC, CTS, layout, DRC, LVS, IR drop)
 ├── flow_config.sh           Single source of truth for tool and PDK paths
-├── Makefile                 Open-source lint + simulation (no Cadence needed)
 └── NOTICE.md                Third-party / PDK licensing notice
 ```
 
@@ -198,24 +197,15 @@ net. The Genus netlist itself is unchanged, so LEC, GLS and ATPG still apply.
 
 ## Getting started
 
-### A. Quick check without Cadence
-Requires [Icarus Verilog](https://steveicarus.github.io/iverilog/) (and optionally
-[Verilator](https://www.veripool.org/verilator/)):
-
-```bash
-make sim            # self-checking testbench
-make lint           # Verilator lint
-make sim NTILES=50 SEED=7
-```
-
-### B. Full Cadence flow
+Full Cadence flow:
 
 ```bash
 source flow_config.sh                                   # tool / PDK paths
 cd simulation && ./run_rtl.sh && cd ..                  # RTL sim + coverage
 cd synthesis && ./run_synth_dft.sh && ./run_atpg.sh && cd ..
 cd simulation && ./run_gls.sh syn && ./run_gls.sh syn sdf && cd ..
-awk -f physical_design/scripts/remove_assigns.awk     synthesis/dft_run/outputs/sa_top_syn_dft.v > synthesis/dft_run/outputs/sa_top_syn_dft_noassign.v
+awk -f physical_design/scripts/remove_assigns.awk \
+    synthesis/dft_run/outputs/sa_top_syn_dft.v > synthesis/dft_run/outputs/sa_top_syn_dft_noassign.v
 # LEC stage 1 (inside synthesis/dft_run):  lec -64 -xl -nogui -dofile fv/sa_top/rtl_to_fv_map.do
 # LEC stage 2:                             equivalence_checking/sa_fvmap_dft_lec.do
 cd physical_design && for s in 01 02 03 04 05 06 07 08; do ./run_pnr.sh $s || break; done
@@ -232,7 +222,7 @@ logs away before re-running a stage (Innovus writes `*.log1` when the log alread
 - Core-only macro: no I/O pads and no top-level PG pins / LEF abstract yet.
 - Vectorless power and **static** IR only (no VCD-based power, dynamic IR or EM).
 - Single RC technology file; one SVT library; no clock gating; stuck-at ATPG only.
-- 200 MHz is conservative for 45 nm (post-route setup slack 0.63 ns).
+- 200 MHz is conservative for 45 nm (post-route setup slack 0.56 ns).
 
 ## License
 

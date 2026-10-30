@@ -68,9 +68,3 @@ Self-checking TB (`tb/tb_sa_top.v`): reference matrix product, expected-row FIFO
 random tiles of random height with 20 % bubbles, load/compute overlap counter,
 async reset during streaming + recovery. Same TB for gate level (`+define+GLS`,
 `+define+SDF`).
-
-Pre-delivery checks (open-source tools): Icarus RTL PASS for 5 seeds; Verilator
-`-Wall` lint clean; 10/11 RTL mutations detected (the undetected one — weight
-banks with synchronous reset — has no functional effect); Yosys mapping to
-gsclib045 ≈ 103 000 µm² / 45 k cells / 4.4 k flops; gate-level sim of that
-netlist with an emulated 8-chain scan insertion: PASS.

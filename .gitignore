@@ -65,7 +65,6 @@ physical_design/results/*.tar.gz
 core.*
 .DS_Store
 Thumbs.db
-build/
 work/
 
 # Working documents
