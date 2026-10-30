@@ -21,9 +21,3 @@ library or other PDK content is reproduced.
 
 If you are a rights holder and believe any file here should be removed, please open an
 issue.
-
-## Trademarks
-
-Cadence, Genus, Innovus, Modus, Xcelium, Virtuoso and Assura are trademarks of
-Cadence Design Systems, Inc. RISC-V is a trademark of RISC-V International. This
-project is independent and not affiliated with or endorsed by either.
