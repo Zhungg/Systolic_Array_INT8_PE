@@ -150,13 +150,6 @@ area and two Metal11 voltage sources per net: worst VDD drop ≈ 2 mV, VSS bounc
   antenna 0 violations, `OAI32X1` = 0.
 - Assura DRC: 0 violations (run before the 72-buffer ECO). Assura LVS on the final layout: **match**.
 
-#### LVS fix: one net per output port
-The first LVS run matched every net and device but reported 64 shorts / 16 unmatched pins.
-The upper bits of each 32-bit `c_out` are sign extensions; Genus merges their flops and
-ties several output ports together with `assign` statements, so one metal net carried
-several pin labels. `physical_design/scripts/remove_assigns.awk` replaces the 72 assigns
-with `BUFX2` instances (marked `dont_touch` in `01_init.tcl`), giving every port its own
-net. The Genus netlist itself is unchanged, so LEC, GLS and ATPG still apply.
 
 ---
 
