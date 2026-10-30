@@ -13,7 +13,7 @@ place & route → IR drop → DRC/LVS) on the **gpdk045 / gsclib045 45 nm** libr
 
 The block is hardened as a **core-only macro** (signal pins on the core boundary, no I/O
 pad ring), the way a compute tile is built before top-level chip integration.
-Flow scripts are derived from [ALU_32b](https://github.com/Zhungg/ALU_32b).
+
 
 > **Scope note.** The Cadence tools and the GPDK045 PDK are licensed products and are
 > **not** distributed here. See [NOTICE.md](NOTICE.md).
