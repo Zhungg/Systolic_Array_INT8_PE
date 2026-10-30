@@ -67,3 +67,6 @@ core.*
 Thumbs.db
 build/
 work/
+
+# Working documents
+*.docx
