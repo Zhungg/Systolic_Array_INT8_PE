@@ -1,6 +1,5 @@
 # 8×8 INT8 Weight-Stationary Systolic Array — RTL-to-GDSII in 45 nm
 
-[![CI](https://github.com/Zhungg/Systolic_Array_INT8_PE/actions/workflows/ci.yml/badge.svg)](https://github.com/Zhungg/Systolic_Array_INT8_PE/actions/workflows/ci.yml)
 [![Flow](https://img.shields.io/badge/EDA-Cadence%20Digital%20Flow-red.svg)](https://www.cadence.com/)
 [![Process](https://img.shields.io/badge/PDK-Cadence%20GPDK045-green.svg)](NOTICE.md)
 [![DRC](https://img.shields.io/badge/DRC-clean-success.svg)](#physical-design-and-signoff)
