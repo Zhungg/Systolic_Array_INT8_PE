@@ -23,7 +23,6 @@ Flow scripts are derived from [ALU_32b](https://github.com/Zhungg/ALU_32b).
 - [Results at a glance](#results-at-a-glance)
 - [Design](#design)
 - [Flow walkthrough](#flow-walkthrough)
-- [Issues found and fixed](#issues-found-and-fixed)
 - [Repository layout](#repository-layout)
 - [Getting started](#getting-started)
 - [Limitations](#limitations) · [License](#license)
@@ -133,7 +132,7 @@ half and raised WNS to **+875 ps**. The pre-change report is the reason for the 
 ### 3. ATPG and equivalence
 Modus reaches 99.84 % stuck-at coverage with 34 patterns — the 64 identical PEs are tested
 in parallel. The 271 redundant faults sit on the sign-extension logic that Genus merged.
-LEC is done in **two stages** because of that merge (see [Issues](#issues-found-and-fixed)).
+LEC is done in **two stages** because of that merge.
 
 ### 4. Place and route (Innovus, batch `run_pnr.sh 01..07`)
 Pins follow the dataflow: activations on the left (Metal3), weights on top (Metal4),
@@ -158,21 +157,6 @@ ties several output ports together with `assign` statements, so one metal net ca
 several pin labels. `physical_design/scripts/remove_assigns.awk` replaces the 72 assigns
 with `BUFX2` instances (marked `dont_touch` in `01_init.tcl`), giving every port its own
 net. The Genus netlist itself is unchanged, so LEC, GLS and ATPG still apply.
-
----
-
-## Issues found and fixed
-
-| Symptom | Root cause | Fix |
-| :--- | :--- | :--- |
-| Genus `VLOGPT-9` on `sa_top.v:152` | `localparam` in a generate block is SystemVerilog | `read_hdl -sv`; LEC golden read as `-systemverilog` |
-| Genus WNS +5 ps | multiply + 32-bit accumulate in one cycle | `MAC_PIPE = 1` |
-| LEC: 846 non-equivalent flops, 1 122 unmapped | Genus sequential merge of sign-extension flops (GLO-42) | Two-stage LEC: RTL → `fv_map` (Genus dofile, `lec -xl`), `fv_map` → DFT netlist |
-| Innovus 06 `IMPOPT-6080` | SI-aware post-route opt needs OCV analysis | `timing_analysis_type ocv`, `timing_analysis_cppr both` |
-| 18 DRC: Metal10 parallel-run-length spacing | VDD/VSS stripe pair 0.5 µm apart, LEF needs 1.25 µm | stripe spacing 1.5 µm |
-| LVS: 64 shorts, 16 unmatched pins | sign-extended `c_out` bits share one net via `assign` | `remove_assigns.awk`: 72 `BUFX2` port buffers, `dont_touch` (Innovus `setDoAssign` via `eval_legacy` had no effect in Stylus) |
-| Assura `AVLVSNN-10100` duplicate cell `CLKBUFX12` | `saveNetlist -phys` writes empty leaf-cell modules | keep only `module sa_top` for LVS (or `saveNetlist -excludeLeafCell`) |
-| 406 `IMPVFC-94` dangling wires after power plan | open ends of the Metal1 rails at the core edge | none needed — final PG check clean, Voltus 0 floating instances |
 
 ---
 
