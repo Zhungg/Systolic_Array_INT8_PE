@@ -123,10 +123,6 @@ a_in[7] -[reg]-[7 skew]-> PE70 -> ...  -> PE77
 tiles of random height with 20 % bubbles, a load/compute-overlap counter and an async reset
 during streaming. The same testbench runs at gate level (`+define+GLS`, `+define+SDF`).
 
-| SimVision waveform | IMC coverage |
-| :---: | :---: |
-| ![SimVision waveform](img/waveform.png) | ![IMC coverage](img/imc.png) |
-
 ### 2. Synthesis and DFT
 Genus maps to gsclib045 (slow corner) and inserts 8 muxed-scan chains. With a
 single-cycle MAC the worst path (input skew register → bank mux → 8×8 multiplier → 32-bit
@@ -134,14 +130,10 @@ adder) left only **+5 ps**; enabling `MAC_PIPE` moved the critical path to the m
 half and raised WNS to **+875 ps**. The pre-change report is the reason for the switch
 (see [CHANGELOG.md](CHANGELOG.md)).
 
-![Genus schematic](img/schematic.png)
-
 ### 3. ATPG and equivalence
 Modus reaches 99.84 % stuck-at coverage with 34 patterns — the 64 identical PEs are tested
 in parallel. The 271 redundant faults sit on the sign-extension logic that Genus merged.
 LEC is done in **two stages** because of that merge (see [Issues](#issues-found-and-fixed)).
-
-![Conformal LEC](img/lec.png)
 
 ### 4. Place and route (Innovus, batch `run_pnr.sh 01..07`)
 Pins follow the dataflow: activations on the left (Metal3), weights on top (Metal4),
@@ -149,24 +141,15 @@ results at the bottom (Metal4, 257 pins), clock/reset/scan on the right. Power: 
 ring (2 µm), Metal10 stripes every 20 µm, Metal1 follow-pins. Hold fixing runs after CTS
 and after route; post-route optimisation is OCV + SI-aware with CPPR.
 
-| Clock tree (Innovus CCOpt) | Layout |
-| :---: | :---: |
-| ![Clock tree](img/cts.png) | ![Layout](img/gds.png) |
-
 ### 5. Power-rail analysis (Voltus, static)
 
-| VDD IR drop | VSS ground bounce |
-| :---: | :---: |
-| ![VDD IR drop](img/ir_drop_vdd.gif) | ![VSS bounce](img/ir_drop_vss.gif) |
+Static ERA analysis on `FUNC_SETUP_VIEW` with the post-route power (6.94 mW, bias 0.9 V) spread by
+area and two Metal11 voltage sources per net: worst VDD drop ≈ 2 mV, VSS bounce 1.53 mV, 0 violations.
 
 ### Physical design and signoff
 - Innovus DRC 0, `verify_connectivity` clean, PG connectivity clean, process
   antenna 0 violations, `OAI32X1` = 0.
 - Assura DRC: 0 violations (run before the 72-buffer ECO). Assura LVS on the final layout: **match**.
-
-| DRC — no errors (Assura) | LVS — schematic and layout match (Assura) |
-| :---: | :---: |
-| ![DRC](img/drc.png) | ![LVS](img/lvs.png) |
 
 #### LVS fix: one net per output port
 The first LVS run matched every net and device but reported 64 shorts / 16 unmatched pins.
@@ -205,7 +188,7 @@ net. The Genus netlist itself is unchanged, so LEC, GLS and ATPG still apply.
 ├── equivalence_checking/    Two-stage LEC dofiles and reports
 ├── physical_design/         run_pnr.sh, scripts/01_init … 08_rail, layer maps, post-route netlists, signoff/
 ├── docs/                    Design specification (SPEC.md)
-├── img/                     Figures used in this README
+├── img/                     Flow screenshots (waveform, coverage, schematic, LEC, CTS, layout, DRC, LVS, IR drop)
 ├── flow_config.sh           Single source of truth for tool and PDK paths
 ├── Makefile                 Open-source lint + simulation (no Cadence needed)
 └── NOTICE.md                Third-party / PDK licensing notice
