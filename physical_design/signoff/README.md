@@ -16,7 +16,6 @@ expanded here (final run, after the 72-buffer LVS fix), and the duplicate `*_all
 | `power/` | 07 | 6.94 mW (internal 77 %, switching 23 %, leakage 0.02 %) |
 | `routing/` | 07 | total net length ≈ 322 mm |
 | `rail_analysis/static_25c/` | 08 Voltus | VDD drop ≈ 2 mV, VSS bounce 1.53 mV (limit 45 mV) |
-| `drc_run1_metal10_spacing/` | first P&R run | the 18 Metal10 PRL-spacing violations fixed in v1.1 |
 
 `physical_verification/pg_connectivity_after_powerplan.rpt` lists 406 `IMPVFC-94`
 "dangling wire" infos: these are the open ends of the Metal1 follow-pin rails at the

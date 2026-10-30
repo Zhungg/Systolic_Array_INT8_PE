@@ -117,9 +117,6 @@ a_in[7] -[reg]-[7 skew]-> PE70 -> ...  -> PE77
   Assura DRC/LVS <── Voltus IR <── Innovus 01..07 <──────────────────────┘
 ```
 
-Run order, checkpoints and the reason behind every physical-design number:
-[docs/RUNBOOK_vi.md](docs/RUNBOOK_vi.md), [docs/PD_PLAN_vi.md](docs/PD_PLAN_vi.md) (Vietnamese).
-
 ### 1. Functional verification and coverage
 `tb/tb_sa_top.v` is self-checking: a reference matrix product, an expected-row FIFO
 (order and count), directed tiles (identity, −128 × −128, 127 × −128, alternating), random
@@ -189,7 +186,7 @@ net. The Genus netlist itself is unchanged, so LEC, GLS and ATPG still apply.
 | Genus WNS +5 ps | multiply + 32-bit accumulate in one cycle | `MAC_PIPE = 1` |
 | LEC: 846 non-equivalent flops, 1 122 unmapped | Genus sequential merge of sign-extension flops (GLO-42) | Two-stage LEC: RTL → `fv_map` (Genus dofile, `lec -xl`), `fv_map` → DFT netlist |
 | Innovus 06 `IMPOPT-6080` | SI-aware post-route opt needs OCV analysis | `timing_analysis_type ocv`, `timing_analysis_cppr both` |
-| 18 DRC: Metal10 parallel-run-length spacing | VDD/VSS stripe pair 0.5 µm apart, LEF needs 1.25 µm | stripe spacing 1.5 µm (first-run report kept in `signoff/drc_run1_metal10_spacing/`) |
+| 18 DRC: Metal10 parallel-run-length spacing | VDD/VSS stripe pair 0.5 µm apart, LEF needs 1.25 µm | stripe spacing 1.5 µm |
 | LVS: 64 shorts, 16 unmatched pins | sign-extended `c_out` bits share one net via `assign` | `remove_assigns.awk`: 72 `BUFX2` port buffers, `dont_touch` (Innovus `setDoAssign` via `eval_legacy` had no effect in Stylus) |
 | Assura `AVLVSNN-10100` duplicate cell `CLKBUFX12` | `saveNetlist -phys` writes empty leaf-cell modules | keep only `module sa_top` for LVS (or `saveNetlist -excludeLeafCell`) |
 | 406 `IMPVFC-94` dangling wires after power plan | open ends of the Metal1 rails at the core edge | none needed — final PG check clean, Voltus 0 floating instances |
@@ -207,7 +204,7 @@ net. The Genus netlist itself is unchanged, so LEC, GLS and ATPG still apply.
 ├── synthesis/               Genus DFT script, netlist/SDC/SDF/SCANDEF, reports, Modus scripts + ATPG logs
 ├── equivalence_checking/    Two-stage LEC dofiles and reports
 ├── physical_design/         run_pnr.sh, scripts/01_init … 08_rail, layer maps, post-route netlists, signoff/
-├── docs/                    SPEC, runbook, PD plan
+├── docs/                    Design specification (SPEC.md)
 ├── img/                     Figures used in this README
 ├── flow_config.sh           Single source of truth for tool and PDK paths
 ├── Makefile                 Open-source lint + simulation (no Cadence needed)

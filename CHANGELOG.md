@@ -2,7 +2,7 @@
 
 ## v1.1 (2026-10-31) - first full RTL-to-GDSII run, DRC + LVS clean
 - RTL: `MAC_PIPE` default 0 -> 1. Genus WNS with the single-cycle MAC was +5 ps
-  (runbook decision point < +0.3 ns); with the product register it is +875 ps.
+  (decision point: < +0.3 ns); with the product register it is +875 ps.
 - Genus: `read_hdl -sv` (a `localparam` inside a generate block is SystemVerilog, VLOGPT-9).
 - LEC: Genus merges 1 122 sign-extension flops (GLO-42), so a single RTL -> DFT-netlist
   compare reports false non-equivalences. Replaced by the two-stage Cadence flow:
