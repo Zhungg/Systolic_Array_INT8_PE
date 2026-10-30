@@ -4,7 +4,7 @@
 [![Flow](https://img.shields.io/badge/EDA-Cadence%20Digital%20Flow-red.svg)](https://www.cadence.com/)
 [![Process](https://img.shields.io/badge/PDK-Cadence%20GPDK045-green.svg)](NOTICE.md)
 [![DRC](https://img.shields.io/badge/DRC-clean-success.svg)](#physical-design-and-signoff)
-[![LVS](https://img.shields.io/badge/LVS-in%20progress-yellow.svg)](#known-open-item-lvs)
+[![LVS](https://img.shields.io/badge/LVS-clean-success.svg)](#physical-design-and-signoff)
 [![License](https://img.shields.io/badge/License-Apache%202.0-lightgrey.svg)](LICENSE)
 
 A matrix-multiply accelerator core — `C = A × W`, int8 × int8 → int32, **64 MACs per
@@ -43,14 +43,15 @@ Flow scripts are derived from [ALU_32b](https://github.com/Zhungg/ALU_32b).
 | ATPG (Modus, stuck-at) | **99.84 %** test coverage (**99.99 %** adjusted), 166 348 faults, 34 test sequences |
 | Equivalence (Conformal LEC, 2 stages) | RTL ≡ `fv_map` (5 031 points + 1 122 merged flops) · `fv_map` ≡ DFT netlist (257 POs + 4 774 DFFs): **PASS** |
 | Gate-level sim (post-synthesis) | Zero-delay **PASS** · Genus SDF **PASS** (100 % path delays annotated) |
-| Floorplan / placement | Core 348.8 × 345.4 µm, 408 signal pins, utilization 61.7 % |
-| Post-route setup (OCV + SI + CPPR, slow 0.9 V / 125 °C) | **+0.634 ns** functional · +43.8 ns scan · 0 violating paths |
-| Post-route hold (fast 1.1 V / 0 °C) | **+0.012 ns** functional · +0.015 ns scan · 0 violating paths |
+| Floorplan / placement | Core 348.8 × 345.4 µm, 408 signal pins, 18 430 cells (incl. 72 port buffers), utilization 61.8 % |
+| Post-route setup (OCV + SI + CPPR, slow 0.9 V / 125 °C) | **+0.564 ns** functional · +43.7 ns scan · 0 violating paths |
+| Post-route hold (fast 1.1 V / 0 °C) | **+0.018 ns** functional · +0.016 ns scan · 0 violating paths |
 | DRV | max transition / capacitance / fanout: 0 / 0 / 0 |
-| Clock tree | 4 774 sinks, 48 clock buffers, skew 31 ps (functional, slow) |
-| DRC (Innovus, Assura) | **0 violations** |
-| LVS (Assura) | Nets / devices / parameters match; **64 pin-label shorts open** — see [below](#known-open-item-lvs) |
-| Power (post-route, `FUNC_SETUP_VIEW`, vectorless) | **6.93 mW** @ 0.9 V (internal 77 %, switching 23 %) |
+| Clock tree | 4 774 sinks, 48 clock buffers, skew 28 ps (functional, slow) |
+| DRC | Innovus: **0** on the final layout · Assura: **0** (run before the 72-buffer ECO) |
+| Process antenna (Innovus `check_process_antenna`) | **0 violations** |
+| LVS (Assura, PG netlist vs. layout) | **Match** — 0 net / device / pin / parameter mismatches |
+| Power (post-route, `FUNC_SETUP_VIEW`, vectorless) | **6.94 mW** @ 0.9 V (internal 77 %, switching 23 %) |
 | Static IR drop (Voltus, 25 °C) | VDD drop ≈ **2 mV**, VSS bounce **1.53 mV** (limit 45 mV), 0 violations |
 
 Evidence for every number is kept in the repo:
@@ -151,17 +152,16 @@ and after route; post-route optimisation is OCV + SI-aware with CPPR.
 
 ### Physical design and signoff
 - Innovus DRC 0, `verify_connectivity` clean, PG connectivity clean, process
-  antenna clean, `OAI32X1` = 0.
-- Assura DRC: 0 violations.
+  antenna 0 violations, `OAI32X1` = 0.
+- Assura DRC: 0 violations (run before the 72-buffer ECO). Assura LVS on the final layout: **match**.
 
-#### Known open item: LVS
-Assura LVS matches all nets, devices and parameters, but reports **64 shorts / 16 unmatched
-schematic pins**. Cause: the upper bits of each 32-bit `c_out` are sign extensions; Genus
-merged their flops and the netlist drives several output ports from one net through
-`assign` statements, so in the layout one metal net carries several pin labels.
-Fix in progress: `setDoAssign on -buffer BUFX2` before `init_design` (gives every output its
-own buffer), then re-run P&R and LVS. LEC and GLS already prove the outputs are functionally
-correct.
+#### LVS fix: one net per output port
+The first LVS run matched every net and device but reported 64 shorts / 16 unmatched pins.
+The upper bits of each 32-bit `c_out` are sign extensions; Genus merges their flops and
+ties several output ports together with `assign` statements, so one metal net carried
+several pin labels. `physical_design/scripts/remove_assigns.awk` replaces the 72 assigns
+with `BUFX2` instances (marked `dont_touch` in `01_init.tcl`), giving every port its own
+net. The Genus netlist itself is unchanged, so LEC, GLS and ATPG still apply.
 
 ---
 
@@ -174,6 +174,7 @@ correct.
 | LEC: 846 non-equivalent flops, 1 122 unmapped | Genus sequential merge of sign-extension flops (GLO-42) | Two-stage LEC: RTL → `fv_map` (Genus dofile, `lec -xl`), `fv_map` → DFT netlist |
 | Innovus 06 `IMPOPT-6080` | SI-aware post-route opt needs OCV analysis | `timing_analysis_type ocv`, `timing_analysis_cppr both` |
 | 18 DRC: Metal10 parallel-run-length spacing | VDD/VSS stripe pair 0.5 µm apart, LEF needs 1.25 µm | stripe spacing 1.5 µm (first-run report kept in `signoff/drc_run1_metal10_spacing/`) |
+| LVS: 64 shorts, 16 unmatched pins | sign-extended `c_out` bits share one net via `assign` | `remove_assigns.awk`: 72 `BUFX2` port buffers, `dont_touch` (Innovus `setDoAssign` via `eval_legacy` had no effect in Stylus) |
 | Assura `AVLVSNN-10100` duplicate cell `CLKBUFX12` | `saveNetlist -phys` writes empty leaf-cell modules | keep only `module sa_top` for LVS (or `saveNetlist -excludeLeafCell`) |
 | 406 `IMPVFC-94` dangling wires after power plan | open ends of the Metal1 rails at the core edge | none needed — final PG check clean, Voltus 0 floating instances |
 
@@ -218,6 +219,7 @@ source flow_config.sh                                   # tool / PDK paths
 cd simulation && ./run_rtl.sh && cd ..                  # RTL sim + coverage
 cd synthesis && ./run_synth_dft.sh && ./run_atpg.sh && cd ..
 cd simulation && ./run_gls.sh syn && ./run_gls.sh syn sdf && cd ..
+awk -f physical_design/scripts/remove_assigns.awk     synthesis/dft_run/outputs/sa_top_syn_dft.v > synthesis/dft_run/outputs/sa_top_syn_dft_noassign.v
 # LEC stage 1 (inside synthesis/dft_run):  lec -64 -xl -nogui -dofile fv/sa_top/rtl_to_fv_map.do
 # LEC stage 2:                             equivalence_checking/sa_fvmap_dft_lec.do
 cd physical_design && for s in 01 02 03 04 05 06 07 08; do ./run_pnr.sh $s || break; done

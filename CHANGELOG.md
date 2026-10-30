@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.1 (2026-10-31) - first full RTL-to-GDSII run
+## v1.1 (2026-10-31) - first full RTL-to-GDSII run, DRC + LVS clean
 - RTL: `MAC_PIPE` default 0 -> 1. Genus WNS with the single-cycle MAC was +5 ps
   (runbook decision point < +0.3 ns); with the product register it is +875 ps.
 - Genus: `read_hdl -sv` (a `localparam` inside a generate block is SystemVerilog, VLOGPT-9).
@@ -12,9 +12,12 @@
   `opt_design -post_route` (IMPOPT-6080: SI-aware optimisation requires OCV).
 - Innovus 03: Metal10 stripe spacing 0.5 -> 1.5 um (18 ParallelRunLength spacing
   violations; LEF requires 1.25 um for W >= 0.75 um, PRL >= 3.5 um).
-- Known open item: Assura LVS - nets/devices match, but the sign-extended `c_out` bits
-  share one net through `assign`s, giving 64 pin-label shorts. Fix under way:
-  `setDoAssign on -buffer BUFX2` in `01_init.tcl`, then re-run P&R and LVS.
+- Assura LVS: the sign-extended `c_out` bits shared one net through 72 `assign`s
+  (64 pin-label shorts). `physical_design/scripts/remove_assigns.awk` turns them into
+  `BUFX2` port buffers (`dont_touch`), read by `01_init.tcl`. LVS now matches.
+  `setDoAssign on -buffer` through `eval_legacy` had no effect in Stylus mode.
+- Final layout: setup +0.564 ns, hold +0.016 ns, Innovus DRC 0, antenna 0,
+  IR drop ~2 mV, 6.94 mW.
 
 ## v1.0 (2026-10-30) - frozen baseline for the 10 h RTL-to-GDSII run
 - RTL: sa_pe / sa_array / sa_top, 8x8 INT8 WS, double-buffered weights, MAC_PIPE option.
