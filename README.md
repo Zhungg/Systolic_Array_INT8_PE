@@ -195,8 +195,6 @@ awk -f physical_design/scripts/remove_assigns.awk \
 cd physical_design && for s in 01 02 03 04 05 06 07 08; do ./run_pnr.sh $s || break; done
 ```
 
-`run_pnr.sh` checks each stage's `STAGE_xx_DONE` marker in `logs/<stage>.log`; move old
-logs away before re-running a stage (Innovus writes `*.log1` when the log already exists).
 
 ---
 
